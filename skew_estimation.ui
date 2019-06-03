@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Skew_estimation</class>
+ <widget class="QMainWindow" name="Skew_estimation">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>532</width>
+    <height>398</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Skew_estimation</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>561</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollarea">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>559</width>
+       <height>359</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="imageLabel">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>46</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>532</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFichier">
+    <property name="title">
+     <string>Fichier</string>
+    </property>
+    <addaction name="actionOuvrir"/>
+    <addaction name="actionSauvegarder"/>
+    <addaction name="actionImprimer"/>
+    <addaction name="separator"/>
+    <addaction name="actionFermer"/>
+   </widget>
+   <widget class="QMenu" name="menuEdition">
+    <property name="title">
+     <string>Edition</string>
+    </property>
+    <addaction name="actionZoomer_25"/>
+    <addaction name="actionD_zoomer_25"/>
+    <addaction name="actionTaille_normale"/>
+    <addaction name="separator"/>
+    <addaction name="actionAjuster_la_fen_tre"/>
+   </widget>
+   <widget class="QMenu" name="menuInclainison">
+    <property name="title">
+     <string>Inclainison</string>
+    </property>
+    <addaction name="actionGris"/>
+    <addaction name="separator"/>
+    <addaction name="actionOtsu"/>
+    <addaction name="actionHybride"/>
+    <addaction name="actionInverser"/>
+    <addaction name="separator"/>
+    <addaction name="actionSquelettisation"/>
+    <addaction name="actionSupprimer_les_pixels_isol_s"/>
+    <addaction name="separator"/>
+    <addaction name="actionTransform_de_Hough"/>
+    <addaction name="actionAIO_Otsu"/>
+    <addaction name="actionAIO_Hybride"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="actionProfile_de_projection"/>
+    <addaction name="separator"/>
+    <addaction name="actionProfile_de_projection_Hybride"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="actionCorrection_automatique"/>
+   </widget>
+   <widget class="QMenu" name="menuEvaluation">
+    <property name="title">
+     <string>Evaluation</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuAide">
+    <property name="title">
+     <string>Aide</string>
+    </property>
+    <addaction name="actionA_propos_de_DCI"/>
+    <addaction name="actionA_propos_de_QT"/>
+   </widget>
+   <addaction name="menuFichier"/>
+   <addaction name="menuEdition"/>
+   <addaction name="menuInclainison"/>
+   <addaction name="menuEvaluation"/>
+   <addaction name="menuAide"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionOuvrir">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/open.png</normaloff>images/open.png</iconset>
+   </property>
+   <property name="text">
+    <string>Ouvrir...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSauvegarder">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/save.png</normaloff>images/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>Sauvegarder...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionImprimer">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/print.png</normaloff>images/print.png</iconset>
+   </property>
+   <property name="text">
+    <string>Imprimer...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionFermer">
+   <property name="icon">
+    <iconset>
+     <normaloff>images/close.png</normaloff>images/close.png</iconset>
+   </property>
+   <property name="text">
+    <string>Fermer</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="actionZoomer_25">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/zoom-in-24.png</normaloff>images/zoom-in-24.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoomer (25%)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl++</string>
+   </property>
+  </action>
+  <action name="actionD_zoomer_25">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/zoom-out-24.png</normaloff>images/zoom-out-24.png</iconset>
+   </property>
+   <property name="text">
+    <string>Dézoomer (25%)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
+   </property>
+  </action>
+  <action name="actionTaille_normale">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/normal.png</normaloff>images/normal.png</iconset>
+   </property>
+   <property name="text">
+    <string>Taille normale</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionAjuster_la_fen_tre">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Ajuster à la fenêtre</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="actionA_propos_de_DCI">
+   <property name="icon">
+    <iconset>
+     <normaloff>images/help-browser.png</normaloff>images/help-browser.png</iconset>
+   </property>
+   <property name="text">
+    <string>A propos de DCI</string>
+   </property>
+  </action>
+  <action name="actionA_propos_de_QT">
+   <property name="icon">
+    <iconset>
+     <normaloff>images/help-browserq.png</normaloff>images/help-browserq.png</iconset>
+   </property>
+   <property name="text">
+    <string>A propos de QT</string>
+   </property>
+  </action>
+  <action name="actionGris">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/rgbtogray.png</normaloff>images/rgbtogray.png</iconset>
+   </property>
+   <property name="text">
+    <string>Gris...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
+   </property>
+  </action>
+  <action name="actionInverser">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Inverser...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionOtsu">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/otsu2.png</normaloff>images/otsu2.png</iconset>
+   </property>
+   <property name="text">
+    <string>Otsu...</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+O</string>
+   </property>
+  </action>
+  <action name="actionHybride">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Hybride...</string>
+   </property>
+   <property name="toolTip">
+    <string>Hybride</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionSquelettisation">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Squelettisation... </string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+S</string>
+   </property>
+  </action>
+  <action name="actionSupprimer_les_pixels_isol_s">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Supprimer les pixels isolés...</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+I</string>
+   </property>
+  </action>
+  <action name="actionTransform_de_Hough">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Transformée de Hough...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
+   </property>
+  </action>
+  <action name="actionAIO_Otsu">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/otsu2.png</normaloff>images/otsu2.png</iconset>
+   </property>
+   <property name="text">
+    <string>AIO Transformée de Hough (Otsu)...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+O</string>
+   </property>
+  </action>
+  <action name="actionAIO_Hybride">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>AIO Transformée de Hough (Hybride)...</string>
+   </property>
+   <property name="toolTip">
+    <string>AIO Transformée de Hough (Hybride)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionCorrection_automatique">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Correction automatique...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionProfile_de_projection">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/histogram1.png</normaloff>images/histogram1.png</iconset>
+   </property>
+   <property name="text">
+    <string>Profile de projection (Otsu)...</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+P</string>
+   </property>
+  </action>
+  <action name="actionProfile_de_projection_Hybride">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/histogram1.png</normaloff>images/histogram1.png</iconset>
+   </property>
+   <property name="text">
+    <string>Profile de projection (Hybride)...</string>
+   </property>
+   <property name="toolTip">
+    <string>Profile de projection (Hybride)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+P</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
